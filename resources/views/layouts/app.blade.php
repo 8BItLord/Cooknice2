@@ -6,7 +6,7 @@
     <title>@yield('title', 'Cooknice')</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+<body class="text-gray-800 min-h-screen flex flex-col" style="background-color: #F9E2AF;">
     <header class="bg-white shadow p-4">
         <h1 class="text-2xl font-bold text-center">Cooknice</h1>
     </header>
