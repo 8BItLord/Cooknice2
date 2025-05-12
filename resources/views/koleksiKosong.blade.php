@@ -64,58 +64,14 @@
         <b class="mx-4 my-2">
           Koleksi anda
         </b>
-        <div class="grid grid-cols-4 gap-6 p-4">
-          <!-- Card -->
-          <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
-            <img src="/gambar/risolmayo.jpeg" alt="Menu" class="w-full h-40 object-cover">
-            <div class="p-4 flex justify-between items-center">
-              <div>
-                <h2 class="font-bold text-lg">
-                  Nama menu
-                </h2>
-                <p class="text-sm text-gray-600">
-                  nama pengunggah
-                </p>
-              </div>
-              <button>
-                <img src="/gambar/bookmarked.png" alt="bookmarked" class="w-6 h-6 cursor-pointer">
-              </button>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
-            <img src="/gambar/Es Cendol Durian.jpeg" alt="Menu" class="w-full h-40 object-cover">
-            <div class="p-4 flex justify-between items-center">
-              <div>
-                <h2 class="font-bold text-lg">
-                  Nama menu
-                </h2>
-                <p class="text-sm text-gray-600">
-                  nama pengunggah
-                </p>
-              </div>
-              <button>
-                <img src="/gambar/bookmarked.png" alt="bookmarked" class="w-6 h-6 cursor-pointer">
-              </button>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
-            <img src="/gambar/SatePadang.jpeg" alt="Menu" class="w-full h-40 object-cover">
-            <div class="p-4 flex justify-between items-center">
-              <div>
-                <h2 class="font-bold text-lg">
-                  Nama menu
-                </h2>
-                <p class="text-sm text-gray-600">
-                  nama pengunggah
-                </p>
-              </div>
-              <button>
-                <img src="/gambar/bookmarked.png" alt="bookmarked" class="w-6 h-6 cursor-pointer">
-              </button>
-            </div>
-          </div>
-          
-          
+        <div class="flex flex-col justify-center items-center h-140">
+          <img src="/gambar/lightbulb.png" alt="kosong" class="w-65">
+          <b class="m-2">
+            Belum ada resep
+          </b>
+          <p class="text-2xl text-[#00000094]">
+            Semua resep yang kamu simpan akan ditampilkan disini
+          </p>
         </div>
         
       </div>
