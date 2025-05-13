@@ -9,13 +9,19 @@
     <div class="bg-[#FFFFFF] text-4xl text-center w-[80px] h-[710px] rounded-2xl m-2 border fixed left-1 flex flex-col items-center">
       <button class="mt-4 w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center transition"><img src="/gambar/fixlogo.png" class="w-10 h-10"></button>
     </div>
+
     <div class="bg-[#FFFFFF] text-4xl text-center w-[1400px] h-[710px] rounded-2xl m-2 border fixed right-1 overflow-y-auto">
       <br>
       <h1>
         CookNice
       </h1>
       <p class="text-2xl">      </p>
+      <br>
       <a href="/login" class="bg-teal-800 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Masuk</a>
+      <br>
+      
+      <a href="/clickedprofile"><img src="/gambar/user.png" class="w-20 h-20 mt-10 flex items-center justify-center"></a>
+
     </div>
   </body>
 </html>
