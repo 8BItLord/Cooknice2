@@ -19,6 +19,18 @@ Route::get('/daftar', function () {
     return view('daftar');
 });
 
-// Tambahkan ini untuk halaman upload resep
-Route::get('/upload-resep', [ResepController::class, 'create'])->name('resep.create');
-Route::post('/upload-resep', [ResepController::class, 'store'])->name('resep.store');
+Route::get('/clickedprofile', function () {
+    return view('clickedprofile');
+});
+
+Route::get('/halamanprofile', function () {
+    return view('halamanprofile');
+});
+
+Route::get('/editprofile', function () {
+    return view('editprofile');
+});
+
+Route::get('/gantiemail', function () {
+    return view('gantiemail');
+});

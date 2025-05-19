@@ -25,19 +25,19 @@
   <!-- Popup Container -->
   <div class="relative bg-[#FFFFFF] rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6">
 
-    <!-- Logo dan Judul -->
-  <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
-    <!-- Logo bundar -->
-    <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
-      <!-- Gunakan icon chef sebagai placeholder (bisa ganti dengan SVG atau gambar asli) -->
-      <img src="/gambar/fixlogo.png" class="w-11 h-11 object-cover" />
-    </div>
+      <!-- Logo dan Judul -->
+    <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
+      <!-- Logo bundar -->
+      <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
+        <!-- Gunakan icon chef sebagai placeholder (bisa ganti dengan SVG atau gambar asli) -->
+        <img src="/gambar/fixlogo.png" class="w-11 h-11 object-cover" />
+      </div>
 
-    <!-- Teks Cooknice dengan jempol -->
-    <div class="flex items-center space-x-2">
-      <img src="/gambar/fixtextlogo.png" class="h-[120px] w-auto object-contain" />
+      <!-- Teks Cooknice dengan jempol -->
+      <div class="flex items-center space-x-2">
+        <img src="/gambar/fixtextlogo.png" class="h-[120px] w-auto object-contain" />
+      </div>
     </div>
-  </div>
     
     <!-- Tombol Close (X) -->
     <a href="#" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
@@ -80,8 +80,8 @@
     </form>
 
     <!-- Tombol Masuk -->
-    <div class="mt-6 ml-10 mr-10">
-      <a href="#" type="submit" class="w-full bg-[#005A64] text-white font-semibold font-poppins py-2 rounded-md hover:bg-[#004852] transition duration-200">
+    <div class="mt-6 ml-10 mr-10 items-center justify-center flex">
+      <a href="#" type="submit" class="w-full bg-[#005A64] text-white  items-center justify-center flex font-semibold font-poppins py-2 rounded-md hover:bg-[#004852] transition duration-200">
         MASUK
       </a>
     </div>
