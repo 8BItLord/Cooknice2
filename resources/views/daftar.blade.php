@@ -96,7 +96,7 @@
       </div>
     </form>
 
-    <!-- Tombol Masuk -->
+    <!-- Tombol Daftar -->
     <div class="mt-6 ml-10 mr-10 items-center justify-center flex">
       <a href="#" type="submit" class="w-full bg-[#005A64] text-white items-center justify-center flex font-semibold font-poppins py-2 rounded-md hover:bg-[#004852] transition duration-200">
         DAFTAR
