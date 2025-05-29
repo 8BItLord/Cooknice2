@@ -13,9 +13,10 @@
       <!-- Sidebar -->
       <aside class="bg-white w-64 flex-shrink-0 rounded-md m-2 mr-1 border shadow-lg transition-all duration-300 md:w-64 sm:w-20 flex flex-col items-center py-6">
         <!-- Logo -->
-        <a href="/welcome" class="w-full flex justify-center mb-10 rounded-2xl">
-          <img src="/gambar/logotext.png" alt="logo" class="w-50 h-auto mx-auto my-2 sm:w-50 transition-all duration-300" />
-        </a>
+        <div class="w-full h-20 mb-10 mt-2 items-center flex justify-center">
+          <img src="gambar/fixlogo.png" alt="logo" class="w-15 rounded-full bg-[#F9E2AF] object-cover">
+          <img src="gambar/fixtextlogo.png" alt="logo" class="w-35 mt-3 object-cover">
+        </div>
 
         <!-- Menu Items -->
         <nav class="flex flex-col space-y-4 w-full px-4">
@@ -81,7 +82,11 @@
           </a>
         </header>
         <div>
-          <img src="/gambar/logotext.png" alt="logo" class="mx-auto">
+          <!--Logo-->
+          <div class="items-center flex justify-center mb-5 mt-5 w-full h-20">
+            <img src="gambar/fixlogo.png" alt="logo" class="w-18 rounded-full bg-[#F9E2AF]">
+            <img src="gambar/fixtextlogo.png" alt="logo" class="w-50 mt-3 object-cover">
+          </div>
           <div class="flex justify-center my-4 space-x-2">
             <!-- Search bar -->
             <div class="flex items-center border border-gray-300 rounded-2xl px-4 py-2 w-80">

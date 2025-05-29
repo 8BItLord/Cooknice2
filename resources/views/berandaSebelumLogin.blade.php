@@ -7,14 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Cooknice-Main</title>
   </head>
+
   <body class="bg-[#F9E2AF] font-poppins">
     <div class = "flex h-screen overflow-hidden">
       <!-- Sidebar -->
-      <aside class="bg-white w-64 flex-shrink-0 rounded-md m-2 mr-1 border shadow-lg transition-all duration-300 md:w-64 sm:w-20 flex flex-col items-center py-6">
+      <aside class="bg-white w-64 flex-shrink-0 rounded-md m-2 mr-1 border shadow-lg transition-all duration-300 md:w-64 sm:w-20 flex flex-col items-center">
         <!-- Logo -->
-        <a href="/welcome" class="w-full flex justify-center mb-10 rounded-2xl">
-          <img src="/gambar/logotext.png" alt="logo" class="w-50 h-auto mx-auto my-2 sm:w-50 transition-all duration-300" />
-        </a>
+        <div class="w-full h-20 mb-10 mt-2 items-center flex justify-center">
+          <img src="gambar/fixlogo.png" alt="logo" class="w-15 rounded-full bg-[#F9E2AF] object-cover">
+          <img src="gambar/fixtextlogo.png" alt="logo" class="w-35 mt-3 object-cover">
+        </div>
 
         <!-- Menu Items -->
         <nav class="flex flex-col space-y-4 w-full px-4">
@@ -54,19 +56,24 @@
               Cemilan
             </span>
           </a>
+          
         </nav>
       </aside>
 
       <div class="bg-[#FFFFFF] text-4xl w-[1250px] flex-1 rounded-md m-2 ml-1 border overflow-y-auto">
         <!-- header -->
         <header class="flex space-x-4 my-2 justify-end sticky top-0 bg-white py-2 z-10">
-          <button popovertarget="login" class=" bg-[#F58E4A] text-white border mx-4 text-lg px-6 py-3 rounded-2xl hover:bg-[#f56c4a] text-center flex items-center justify-center space-x-2 cursor-pointer">
+          <button id="openLogin" class=" bg-[#F58E4A] text-white border mx-4 text-lg px-6 py-3 rounded-2xl hover:bg-[#f56c4a] text-center flex items-center justify-center space-x-2 cursor-pointer">
             Masuk
           </button>
 
         </header>
         <div>
-          <img src="/gambar/logotext.png" alt="logo" class="mx-auto">
+          <!--Logo-->
+          <div class="items-center flex justify-center mb-5 mt-5 w-full h-20">
+            <img src="gambar/fixlogo.png" alt="logo" class="w-18 rounded-full bg-[#F9E2AF]">
+            <img src="gambar/fixtextlogo.png" alt="logo" class="w-50 mt-3 object-cover">
+          </div>
           <div class="flex justify-center my-4 space-x-2">
             <!-- Search bar -->
             <div class="flex items-center border border-gray-300 rounded-2xl px-4 py-2 w-80">
@@ -222,11 +229,6 @@
       </div>
     </div>
 
-    
-    <!-- Tombol Buka Popup Login -->
-    <button id="openLogin" class="px-4 py-2 bg-[#005A64] text-white rounded-md hover:bg-[#004852] transition">
-      Buka Login
-    </button>
 
     <!-- Backdrop Blur -->
     <div id="popup-backdrop" class="fixed inset-0 z-40 hidden backdrop-blur-sm bg-transparent"></div>
@@ -234,9 +236,7 @@
     <!-- === POPUP LOGIN === -->
     <div
       id="login"
-      popover
-      class="relative bg-white rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6 z-50"
-      style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+      class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6 z-50 hidden"
     >
       <!-- Logo dan Judul -->
       <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
@@ -327,9 +327,7 @@
     <!-- === POPUP DAFTAR === -->
     <div
       id="daftar"
-      popover
-      class="relative bg-white rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6 z-50"
-      style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+      class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6 z-50 hidden"
     >
       <!-- Logo dan Judul -->
       <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
@@ -363,18 +361,18 @@
         </div>
         <!-- Email & Password -->
         <div>
-          <label for="email" class="block text-sm font-semibold text-[#005A64] mb-1">Email</label>
+          <label for="daftarEmail" class="block text-sm font-semibold text-[#005A64] mb-1">Email</label>
           <div class="relative">
-            <input type="email" id="email" class="w-full border-b-2 border-gray-400 focus:outline-none focus:border-[#005A64] pr-10 pb-1 text-[#005A64]" placeholder="Masukkan Email" />
+            <input type="email" id="daftarEmail" class="w-full border-b-2 border-gray-400 focus:outline-none focus:border-[#005A64] pr-10 pb-1 text-[#005A64]" placeholder="Masukkan Email" />
             <span class="absolute right-2 top-1.5 text-gray-400">
               <img src="/gambar/email1.png" class="w-4 h-4" />
             </span>
           </div>
         </div>
         <div>
-          <label for="password" class="block text-sm font-semibold text-[#005A64] mb-1">Password</label>
+          <label for="daftarPassword" class="block text-sm font-semibold text-[#005A64] mb-1">Password</label>
           <div class="relative">
-            <input type="password" id="password" class="w-full border-b-2 border-gray-400 focus:outline-none focus:border-[#005A64] pr-10 pb-1 text-[#005A64]" placeholder="Masukkan Password" />
+            <input type="password" id="daftarPassword" class="w-full border-b-2 border-gray-400 focus:outline-none focus:border-[#005A64] pr-10 pb-1 text-[#005A64]" placeholder="Masukkan Password" />
             <span class="absolute right-2 top-1.5 text-gray-400">
               <img src="/gambar/lock1.png" class="w-4 h-4" />
             </span>
@@ -418,38 +416,49 @@
       const daftar = document.getElementById('daftar');
       const backdrop = document.getElementById('popup-backdrop');
 
-      // Tombol Buka/Tutup
-      document.getElementById('openLogin').addEventListener('click', () => login.showPopover());
-      document.getElementById('closeLogin').addEventListener('click', () => login.hidePopover());
-      document.getElementById('closeDaftar').addEventListener('click', () => daftar.hidePopover());
-
-      // Backdrop toggle otomatis
-      function toggleBackdrop(e) {
-        if (e.target.matches(':popover-open')) {
-          backdrop.classList.remove('hidden');
-        } else {
-          backdrop.classList.add('hidden');
-        }
+      // Function to show popup
+      function showPopup(popup) {
+        backdrop.classList.remove('hidden');
+        popup.classList.remove('hidden');
       }
-      login.addEventListener('toggle', toggleBackdrop);
-      daftar.addEventListener('toggle', toggleBackdrop);
+
+      // Function to hide popup
+      function hidePopup(popup) {
+        backdrop.classList.add('hidden');
+        popup.classList.add('hidden');
+      }
+
+      // Tombol Buka/Tutup Login
+      document.getElementById('openLogin').addEventListener('click', () => {
+        showPopup(login);
+      });
+
+      document.getElementById('closeLogin').addEventListener('click', () => {
+        hidePopup(login);
+      });
+
+      document.getElementById('closeDaftar').addEventListener('click', () => {
+        hidePopup(daftar);
+      });
+
+      // Backdrop click to close
       backdrop.addEventListener('click', () => {
-        login.hidePopover();
-        daftar.hidePopover();
+        hidePopup(login);
+        hidePopup(daftar);
       });
 
       // Pindah dari login ke daftar
       document.getElementById('switchToDaftar').addEventListener('click', (e) => {
         e.preventDefault();
-        login.hidePopover();
-        setTimeout(() => daftar.showPopover(), 200); // Delay agar animasi halus
+        hidePopup(login);
+        setTimeout(() => showPopup(daftar), 200); // Delay agar animasi halus
       });
 
       // Pindah dari daftar ke login
       document.getElementById('switchToLogin').addEventListener('click', (e) => {
         e.preventDefault();
-        daftar.hidePopover();
-        setTimeout(() => login.showPopover(), 200);
+        hidePopup(daftar);
+        setTimeout(() => showPopup(login), 200);
       });
     </script>
 

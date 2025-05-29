@@ -26,7 +26,7 @@
   <div class="relative bg-[#FFFFFF] rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6">
 
     <!-- Logo dan Judul -->
-  <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
+    <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
     <!-- Logo bundar -->
     <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
       <!-- Gunakan icon chef sebagai placeholder (bisa ganti dengan SVG atau gambar asli) -->
