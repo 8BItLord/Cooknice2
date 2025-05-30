@@ -10,16 +10,24 @@ class Recipe extends Model
     use HasFactory;
 
     protected $fillable = [
-        'judul',
-        'deskripsi',
-        'porsi',
-        'durasi',
+        'user_id',
+        'title',
+        'description',
+        'main_image',
+        'servings',
+        'duration',
         'category_id',
-        'foto',
-        'bahan',
-        'langkah',
+        'ingredients',
+        'steps',
+        'step_images',
     ];
 
+    protected $casts = [
+        'ingredients' => 'array',
+        'steps' => 'array',
+        'step_images' => 'array',
+    ];
+    
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends Controller
 {
@@ -20,8 +19,8 @@ class RecipeController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
-            'porsi' => 'nullable|string|max:100',
-            'durasi' => 'nullable|string|max:100',
+            'porsi' => 'nullable|integer',
+            'durasi' => 'nullable|integer',
             'bahan' => 'required|array',
             'bahan.*' => 'required|string|max:255',
             'langkah' => 'required|array',
@@ -51,17 +50,16 @@ class RecipeController extends Controller
             }
         }
 
-        // Simpan ke database
         $recipe = new Recipe();
-        $recipe->judul = $request->judul;
-        $recipe->deskripsi = $request->deskripsi;
-        $recipe->porsi = $request->porsi;
-        $recipe->durasi = $request->durasi;
+        $recipe->title = $request->judul;
+        $recipe->description = $request->deskripsi;
+        $recipe->servings = $request->porsi;
+        $recipe->duration = $request->durasi;
         $recipe->category_id = $request->category_id;
-        $recipe->foto = $fotoPath;
-        $recipe->bahan = $request->bahan;
-        $recipe->langkah = $request->langkah;
-        $recipe->foto_langkah = $fotoLangkahPaths;
+        $recipe->main_image = $fotoPath;
+        $recipe->ingredients = $request->bahan;
+        $recipe->steps = $request->langkah;
+        $recipe->step_images = $fotoLangkahPaths;
         $recipe->save();
 
         return redirect()->back()->with('success', 'Resep berhasil diunggah!');
