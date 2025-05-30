@@ -1,5 +1,5 @@
 <!-- Card -->
-<div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+<a href="/halamanResep" class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
     <img src="/gambar/SatePadang.jpeg" alt="Menu" class="w-full h-40 object-cover">
     <div class="p-4 flex justify-between items-center">
         <div>
@@ -17,4 +17,4 @@
 
         </button>
     </div>
-</div>
+</a>
