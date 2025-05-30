@@ -26,7 +26,7 @@
   <div class="relative bg-[#FFFFFF] rounded-xl border-[6px] border-[#F9E2AF] shadow-lg w-full max-w-sm p-6">
 
     <!-- Logo dan Judul -->
-  <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
+    <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
     <!-- Logo bundar -->
     <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
       <img src="/gambar/fixlogo.png" class="w-11 h-11 object-cover" />
@@ -95,7 +95,7 @@
       </div>
     </form>
 
-    <!-- Tombol Masuk -->
+    <!-- Tombol Daftar -->
     <div class="mt-6 ml-10 mr-10 items-center justify-center flex">
       <a href="#" type="submit" class="w-full bg-[#005A64] text-white items-center justify-center flex font-semibold font-poppins py-2 rounded-md hover:bg-[#004852] transition duration-200">
         DAFTAR

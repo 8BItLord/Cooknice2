@@ -35,6 +35,66 @@ Route::get('/gantiemail', function () {
     return view('gantiemail');
 });
 
-Route::get('/berandasetelahlogin', function () {
+Route::get('/berandaSebelumLogin', function () {
+    return view('berandaSebelumLogin');
+});
+
+Route::get('/berandaSetelahLogin', function () {
     return view('berandaSetelahLogin');
+});
+
+Route::get('/makanan', function () {
+    return view('makanan');
+});
+
+Route::get('/minuman', function () {
+    return view('minuman');
+});
+
+Route::get('/cemilan', function () {
+    return view('cemilan');
+});
+
+Route::get('/koleksiAda', function () {
+    return view('koleksiAda');
+});
+
+Route::get('/koleksiKosong', function () {
+    return view('koleksiKosong');
+});
+
+Route::get('/uploadresep', function () {
+    return view('uploadresep');
+});
+
+Route::get('/berandaSebelumLogin', function () {
+    return view('berandaSebelumLogin');
+});
+
+Route::get('/berandaSetelahLogin', function () {
+    return view('berandaSetelahLogin');
+});
+
+Route::get('/makanan', function () {
+    return view('makanan');
+});
+
+Route::get('/minuman', function () {
+    return view('minuman');
+});
+
+Route::get('/cemilan', function () {
+    return view('cemilan');
+});
+
+Route::get('/koleksiAda', function () {
+    return view('koleksiAda');
+});
+
+Route::get('/koleksiKosong', function () {
+    return view('koleksiKosong');
+});
+
+Route::get('/uploadresep', function () {
+    return view('uploadresep');
 });
