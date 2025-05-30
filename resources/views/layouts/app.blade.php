@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-    <body class="bg-[#F9E2AF] font-poppins">
+    <body class="bg-[#F9E2AF]">
         @yield('content')
     </body>
 
