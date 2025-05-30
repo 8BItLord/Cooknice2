@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ResepController;
+use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,6 +63,5 @@ Route::get('/koleksiKosong', function () {
     return view('koleksiKosong');
 });
 
-Route::get('/uploadresep', function () {
-    return view('uploadresep');
-});
+Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
+Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');

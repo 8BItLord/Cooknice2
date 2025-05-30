@@ -14,7 +14,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('resep.store') }}" method="POST" enctype="multipart/form-data" class="md:flex md:space-x-6">
+            <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data" class="md:flex md:space-x-6">
                 @csrf
 
                 <!-- Bagian kiri: Foto dan bahan -->
@@ -51,12 +51,22 @@
                 <div class="w-full md:w-2/3 space-y-6 mt-6 md:mt-0">
                     <div>
                         <label class="block font-medium">Judul Resep</label>
-                        <input type="text" name="judul" class="border p-2 rounded w-full" required>
+                        <input type="text" name="title" class="border p-2 rounded w-full" required>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium">Kategori</label>
+                        <select name="category_id" class="border p-2 rounded w-full" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div>
                         <label class="block font-medium">Deskripsi</label>
-                        <textarea name="deskripsi" rows="5" class="border p-2 rounded w-full"></textarea>
+                        <textarea name="description" rows="5" class="border p-2 rounded w-full"></textarea>
                     </div>
 
                     <div>
@@ -166,5 +176,20 @@
 
         langkahCounter++;
     }
+    document.addEventListener('change', function (e) {
+    if (e.target.name === 'foto_langkah[]') {
+        const fileInput = e.target;
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const previewImg = fileInput.previousElementSibling.querySelector('img');
+                previewImg.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
 </script>
 @endsection
