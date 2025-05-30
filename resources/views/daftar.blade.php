@@ -29,7 +29,6 @@
   <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
     <!-- Logo bundar -->
     <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
-      <!-- Gunakan icon chef sebagai placeholder (bisa ganti dengan SVG atau gambar asli) -->
       <img src="/gambar/fixlogo.png" class="w-11 h-11 object-cover" />
     </div>
 
@@ -40,9 +39,9 @@
   </div>
     
     <!-- Tombol Close (X) -->
-    <a href="#" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
+    <a href="/welcome" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
     
-    <!-- Form Login -->
+    <!-- Form Daftar -->
     <form class="space-y-6">
       <!-- Nama -->
       <div>

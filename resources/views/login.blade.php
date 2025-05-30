@@ -40,7 +40,7 @@
     </div>
     
     <!-- Tombol Close (X) -->
-    <a href="#" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
+    <a href="/welcome" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
     
     <!-- Form Login -->
     <form class="space-y-6">

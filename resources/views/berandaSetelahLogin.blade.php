@@ -46,7 +46,9 @@
     <div class="bg-[#FFFFFF] text-4xl w-[1250px] h-[720px] rounded-md m-1 border fixed right-1 overflow-y-auto">
       <!-- header -->
       <header class="flex space-x-4 my-2 justify-end sticky top-0 bg-white py-2 z-10">
-        <img src="/gambar/profile.png" alt="prfil" class="w-[50px] h-[50px] cursor-pointer">
+        <button onclick="toggleProfilePopup()" class="rounded-full border-2 border-[#F58E4A]">
+          <img src="/gambar/profile.png" alt="prfil" class="w-[50px] h-[50px] cursor-pointer">
+        </button>
         <button class="bg-[#F58E4A] text-white mx-4 text-lg px-6 py-3 rounded-2xl hover:bg-[#f56c4a] text-center flex items-center justify-center space-x-2 cursor-pointer">
           <img src="/gambar/upload.png" alt="unggah" class="w-6 h-6" />
           <span>
@@ -209,5 +211,66 @@
         
       </div>
     </div>
+
+    <!-- Popup Profile -->
+    <div id="profilePopup" class="fixed top-16 right-4 bg-white rounded-lg shadow-xl border border-gray-200 w-64 p-4 z-50 hidden">
+      <!-- Header Profil -->
+      <div class="flex items-center space-x-3 mb-4">
+        <img src="/gambar/user.png" alt="Avatar" class="w-10 h-10 rounded-full">
+        <div>
+          <p class="text-sm font-semibold text-gray-800">Nama Pengguna</p>
+          <p class="text-xs text-gray-500">@cooknice123</p>
+        </div>
+      </div>
+
+      <!-- Menu Profil -->
+      <div class="space-y-3 text-sm text-gray-700">
+        <a href="/halamanprofile" class="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
+          <img src="/gambar/user4.png" class="w-4 h-4" />
+          <span>Profil</span>
+        </a>
+<!--        <a href="#" class="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
+          <img src="/gambar/settings1.png" class="w-4 h-4" />
+          <span>Pengaturan</span>
+        </a>
+-->
+      </div>
+
+      <!-- Garis pembatas -->
+      <hr class="my-3 border-gray-200">
+
+      <!-- Menu Bawah -->
+      <div class="space-y-3 text-sm text-gray-700">
+        <a href="#" class="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded text-red-500">
+          <img src="/gambar/logout.png" class="w-4 h-4" />
+          <span>Keluar</span>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function toggleProfilePopup() {
+        const popup = document.getElementById('profilePopup');
+        popup.classList.toggle('hidden');
+        
+        // Tutup popup ketika klik di luar
+        if (!popup.classList.contains('hidden')) {
+          setTimeout(() => {
+            document.addEventListener('click', closePopupOutside);
+          }, 10);
+        }
+      }
+
+      function closePopupOutside(event) {
+        const popup = document.getElementById('profilePopup');
+        const profileImg = document.querySelector('header img[alt="profile"]');
+        
+        if (!popup.contains(event.target) && event.target !== profileImg) {
+          popup.classList.add('hidden');
+          document.removeEventListener('click', closePopupOutside);
+        }
+      }
+    </script>
+
   </body>
 </html>
