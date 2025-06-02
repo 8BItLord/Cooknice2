@@ -63,5 +63,9 @@ Route::get('/koleksiKosong', function () {
     return view('koleksiKosong');
 });
 
+Route::get('/halamanResep', function () {
+    return view('halamanResep');
+});
+
 Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');
