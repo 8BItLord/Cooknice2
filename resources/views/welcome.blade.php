@@ -3,14 +3,19 @@
 @section ('tittle', 'cooknice')
 
 @section ('content')
+
     <div class = "flex h-screen overflow-hidden">
       <!-- Sidebar -->
-      <x-Sidebar></x-Sidebar>
+      <x-sidebar></x-sidebar>
 
       <div class="bg-[#FFFFFF] text-4xl w-[1250px] flex-1 rounded-md m-2 ml-1 border overflow-y-auto">
         <!-- header -->
-        <x-header></x-header>
-        
+        <header class="flex space-x-4 my-2 justify-end sticky top-0 bg-white py-2 z-10">
+          <a href="/login" class=" bg-[#F58E4A] text-white border mx-4 text-lg px-6 py-3 rounded-2xl hover:bg-[#f56c4a] text-center flex items-center justify-center space-x-2 cursor-pointer">
+            Masuk
+          </a>
+
+        </header>
         <div>
           <!--Logo-->
           <div class="items-center flex justify-center mb-5 mt-5 w-full h-20">
@@ -34,7 +39,7 @@
             </button>
           </div>
 
-          <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 p-4">
+          <div class="grid grid-cols-4 gap-6 p-4">
             <!-- Card -->
             <x-cardresep></x-cardresep>
             <x-cardresep></x-cardresep>
@@ -45,13 +50,12 @@
             <x-cardresep></x-cardresep>
             <x-cardresep></x-cardresep>
             
+            
           </div>
           
         </div>
       </div>
     </div>
-
-    <x-clickedprofile></x-clickedprofile>
-
+    
     
 @endsection

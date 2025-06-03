@@ -62,10 +62,6 @@
       </div>
     </div>
 
-
-    <x-logindaftar></x-logindaftar>
-
-
-  
+    
   </body>
 </html>
