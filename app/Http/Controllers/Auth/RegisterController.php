@@ -46,7 +46,7 @@ class RegisterController extends Controller
             Auth::login($user);
 
             // Redirect ke halaman beranda
-            return redirect('/beranda')->with('success', 'Pendaftaran berhasil! Anda telah login.');
+            return redirect('/berandaSetelahLogin')->with('success', 'Pendaftaran berhasil! Anda telah login.');
         } catch (\Exception $e) {
             Log::error('Manual Registration Failed', ['error' => $e->getMessage(), 'email' => $request->email]);
             return back()->withErrors(['email' => 'Pendaftaran gagal. Silakan coba lagi.'])->withInput();

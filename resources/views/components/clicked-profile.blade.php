@@ -26,10 +26,7 @@
           <img src="/gambar/user4.png" class="w-4 h-4" />
           <span>Profil</span>
         </a>
-        <a href="#" class="flex items-center space-x-2 cursor-pointer hover:text-black">
-          <img src="/gambar/settings1.png" class="w-4 h-4" />
-          <span>Pengaturan</span>
-        </a>
+        
       </div>
 
       <!-- Garis pembatas -->
