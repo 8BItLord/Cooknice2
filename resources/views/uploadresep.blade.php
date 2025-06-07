@@ -165,13 +165,13 @@
         wrapper.className = 'flex items-start space-x-3';
 
         const circle = document.createElement('div');
-        circle.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold';
+        circle.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-[#F58E4A] text-white font-bold text-xl mt-1';
         circle.textContent = langkahCounter;
 
         const content = document.createElement('div');
         content.className = 'flex-1 space-y-2';
         content.innerHTML = `
-            <textarea name="langkah[]" rows="3" placeholder="Langkah memasak" class="border p-2 rounded w-full"></textarea>
+            <textarea name="langkah[]" rows="3" class="border p-2 rounded w-full text-xl"></textarea>
             <div
                 class="border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50"
                 style="width: 80px; height: 80px;"

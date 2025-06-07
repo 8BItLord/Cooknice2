@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -69,3 +71,14 @@ Route::get('/halamanResep', function () {
 
 Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');
+
+Route::get('/daftar', [RegisterController::class, 'showRegistrationForm'])->name('daftar');
+Route::post('/daftar', [RegisterController::class, 'register']);
+
+Route::get('/auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+Route::get('/auth/facebook', [RegisterController::class, 'redirectToFacebook'])->name('auth.facebook');
+Route::get('/auth/facebook/callback', [RegisterController::class, 'handleFacebookCallback']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
