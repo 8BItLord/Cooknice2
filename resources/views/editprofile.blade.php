@@ -51,10 +51,10 @@
 
           <div class="flex justify-between items-center my-4">
             <div class="w-1/2 flex justify-center">
-              <button type="submit" class="bg-[#025464] text-white w-[200px] font-semibold py-5 rounded-md hover:bg-[#013f4c] transition cursor-pointer">Perbarui</button>
+              <button type="submit" class="bg-[#F58E4A] text-white w-[200px] font-semibold py-5 rounded-md hover:bg-[#f56c4a] transition cursor-pointer">Perbarui</button>
             </div>
             <div class="w-1/2 flex justify-center">
-              <button type="button" class="bg-[#558B8C] text-white w-[200px] font-semibold py-5 rounded-md hover:bg-[#3e6c6d] transition cursor-pointer">Batal</button>
+              <button type="button" class="bg-[#F58E4A] text-white w-[200px] font-semibold py-5 rounded-md hover:bg-[#f56c4a] transition cursor-pointer">Batal</button>
             </div>
           </div>
         </form>

@@ -1,9 +1,14 @@
-@extends ('layouts.app')
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Cooknice-Main</title>
+  </head>
 
-@section ('tittle', 'cooknice')
-
-@section ('content')
-
+  <body class="bg-[#F9E2AF]">
     <div class = "flex h-screen overflow-hidden">
       <!-- Sidebar -->
       <x-sidebar></x-sidebar>
@@ -56,8 +61,7 @@
         </div>
       </div>
     </div>
+
+    
   </body>
 </html>
-    
-    
-@endsection
