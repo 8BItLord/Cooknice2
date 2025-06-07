@@ -8,7 +8,7 @@
         <!-- Menu Items -->
         <nav class="flex flex-col space-y-4 w-full px-4">
           <!-- Item -->
-          <a href="/" class="{{ request()->is('/') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/berandaSetelahLogin" class="{{ request()->is('berandaSetelahLogin') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/home.png" alt="beranda" class="w-6 h-6" />
             </div>
