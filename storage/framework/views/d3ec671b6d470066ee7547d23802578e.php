@@ -12,7 +12,7 @@
     <img src="/gambar/user.png" alt="Avatar" class="w-10 h-10 rounded-full">
     <div>
       <p class="text-sm font-semibold text-gray-800">
-        {{ Auth::user()->name ?? 'Guest User' }} {{-- Menampilkan nama pengguna --}}
+        <?php echo e(Auth::user()->name ?? 'Guest User'); ?> 
       </p>
     </div>
     <button id="closeprofile" class="absolute right-3 top-2 text-xl cursor-pointer">&times;</button>
@@ -28,8 +28,8 @@
 
   <hr class="my-3 border-t border-black">
 
-  <form action="{{ route('logout') }}" method="POST" id="logout-form">
-    @csrf
+  <form action="<?php echo e(route('logout')); ?>" method="POST" id="logout-form">
+    <?php echo csrf_field(); ?>
     <button type="submit" class="flex items-center space-x-2 cursor-pointer hover:text-black text-sm">
       <img src="/gambar/logout.png" class="w-4 h-4" />
       <span>Keluar</span>
@@ -61,4 +61,4 @@
     popover.hidePopover();
   });
 
-</script>
+</script><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/components/clicked-profile.blade.php ENDPATH**/ ?>

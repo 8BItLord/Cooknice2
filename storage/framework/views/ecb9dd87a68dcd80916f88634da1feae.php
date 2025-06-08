@@ -1,14 +1,50 @@
-@extends ('layouts.app')
 
-@section ('tittle', 'cooknice')
 
-@section ('content')
+<?php $__env->startSection('tittle', 'cooknice'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <div class="flex h-screen overflow-hidden">
-    <x-sidebar></x-sidebar>        
+    <?php if (isset($component)) { $__componentOriginald31f0a1d6e85408eecaaa9471b609820 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald31f0a1d6e85408eecaaa9471b609820 = $attributes; } ?>
+<?php $component = App\View\Components\Sidebar::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('sidebar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Sidebar::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald31f0a1d6e85408eecaaa9471b609820)): ?>
+<?php $attributes = $__attributesOriginald31f0a1d6e85408eecaaa9471b609820; ?>
+<?php unset($__attributesOriginald31f0a1d6e85408eecaaa9471b609820); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald31f0a1d6e85408eecaaa9471b609820)): ?>
+<?php $component = $__componentOriginald31f0a1d6e85408eecaaa9471b609820; ?>
+<?php unset($__componentOriginald31f0a1d6e85408eecaaa9471b609820); ?>
+<?php endif; ?>        
     
     <div class="bg-white w-full flex-1 rounded-md m-2 ml-1 border overflow-y-auto">
-        <x-header></x-header>
+        <?php if (isset($component)) { $__componentOriginal2a2e454b2e62574a80c8110e5f128b60 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2a2e454b2e62574a80c8110e5f128b60 = $attributes; } ?>
+<?php $component = App\View\Components\Header::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('header'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Header::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2a2e454b2e62574a80c8110e5f128b60)): ?>
+<?php $attributes = $__attributesOriginal2a2e454b2e62574a80c8110e5f128b60; ?>
+<?php unset($__attributesOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60)): ?>
+<?php $component = $__componentOriginal2a2e454b2e62574a80c8110e5f128b60; ?>
+<?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
+<?php endif; ?>
 
         <div class="p-6">
             <!-- Header Resep -->
@@ -46,7 +82,7 @@
                     <!-- Button -->
                     <div class="mt-4">
                         <button class=" text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 bg-[#F58E4A] hover:bg-[#f56c4a] cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="{{ request()->is('koleksiAda') ? 'black' : 'none' }}" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="<?php echo e(request()->is('koleksiAda') ? 'black' : 'none'); ?>" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                             </svg>
                             Tambahkan ke koleksi
@@ -82,9 +118,9 @@
                 <div class="w-1/4">
                     <h2 class="text-2xl font-bold mb-2">Bahan-bahan</h2>
                     <ul class="list-none space-y-1">
-                        @for ($i = 1; $i <= 10; $i++)
-                            <li class="border-b border-dotted border-gray-400 font-semibold">bahan {{ $i }}</li>
-                        @endfor
+                        <?php for($i = 1; $i <= 10; $i++): ?>
+                            <li class="border-b border-dotted border-gray-400 font-semibold">bahan <?php echo e($i); ?></li>
+                        <?php endfor; ?>
                     </ul>
                 </div>
 
@@ -110,7 +146,25 @@
     </div>
 </div>
 
-<x-clickedprofile></x-clickedprofile>
+<?php if (isset($component)) { $__componentOriginalaf931c6533813c406795ddc6c29437fc = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalaf931c6533813c406795ddc6c29437fc = $attributes; } ?>
+<?php $component = App\View\Components\Clickedprofile::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('clickedprofile'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Clickedprofile::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalaf931c6533813c406795ddc6c29437fc)): ?>
+<?php $attributes = $__attributesOriginalaf931c6533813c406795ddc6c29437fc; ?>
+<?php unset($__attributesOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalaf931c6533813c406795ddc6c29437fc)): ?>
+<?php $component = $__componentOriginalaf931c6533813c406795ddc6c29437fc; ?>
+<?php unset($__componentOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php endif; ?>
 
 <!-- Deskripsi Expand Script -->
 <script>
@@ -128,4 +182,6 @@
     }
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/halamanResep.blade.php ENDPATH**/ ?>

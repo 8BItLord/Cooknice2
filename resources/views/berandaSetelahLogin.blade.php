@@ -40,18 +40,12 @@
             </button>
           </div>
 
-          <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 p-4">
-            <!-- Card -->
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            
+          <div class="grid grid-cols-4 gap-6 p-4">
+            @foreach ($recipes as $recipe)
+                <x-cardresep :recipe="$recipe"></x-cardresep>
+            @endforeach
           </div>
+          
           
         </div>
       </div>

@@ -5,22 +5,67 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class RecipeController extends Controller
 {
+    public function indexBeforeLogin()
+    {
+        $recipes = Recipe::latest()->get(); 
+        return view('berandaSebelumLogin', compact('recipes'));
+    }
+
+    public function indexAfterLogin()
+    {
+        $recipes = Recipe::latest()->get();
+        return view('berandaSetelahLogin', compact('recipes'));
+    }
+
+    public function showMakanan()
+    {
+        $category = Category::where('name', 'Makanan')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('makanan', compact('recipes'));
+    }
+
+    public function showMinuman()
+    {
+        $category = Category::where('name', 'Minuman')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('minuman', compact('recipes'));
+    }
+
+    public function showCemilan()
+    {
+        $category = Category::where('name', 'Cemilan')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('cemilan', compact('recipes'));
+    }
+
     public function create()
     {
-        $categories = Category::all(); // Ambil semua kategori untuk dropdown
+        $categories = Category::all();
         return view('uploadresep', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'porsi' => 'nullable|integer',
-            'durasi' => 'nullable|integer',
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'porsi' => 'nullable|string',
+            'durasi' => 'nullable|string',
             'bahan' => 'required|array',
             'bahan.*' => 'required|string|max:255',
             'langkah' => 'required|array',
@@ -31,37 +76,41 @@ class RecipeController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Simpan foto utama
-        $fotoPath = null;
-        if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('resep/foto', 'public');
-        }
+        try {
+            $fotoPath = null;
+            if ($request->hasFile('foto')) {
+                $fotoPath = $request->file('foto')->store('images/recipes', 'public');
+            }
 
-        // Simpan foto langkah (jika ada)
-        $fotoLangkahPaths = [];
-        if ($request->hasFile('foto_langkah')) {
-            foreach ($request->file('foto_langkah') as $fotoLangkah) {
-                if ($fotoLangkah) {
-                    $path = $fotoLangkah->store('resep/langkah', 'public');
-                    $fotoLangkahPaths[] = $path;
-                } else {
-                    $fotoLangkahPaths[] = null;
+            $fotoLangkahPaths = [];
+            if ($request->hasFile('foto_langkah')) {
+                foreach ($request->file('foto_langkah') as $fotoLangkah) {
+                    if ($fotoLangkah && $fotoLangkah->isValid()) {
+                        $fotoLangkahPaths[] = $fotoLangkah->store('images/steps', 'public');
+                    } else {
+                        Log::warning("File langkah tidak valid atau kosong.");
+                    }
                 }
             }
+
+            $recipe = new Recipe();
+            $recipe->user_id = Auth::id();
+            $recipe->title = $request->title;
+            $recipe->description = $request->description;
+            $recipe->servings = $request->porsi;
+            $recipe->duration = $request->durasi;
+            $recipe->category_id = $request->category_id;
+            $recipe->main_image = $fotoPath;
+            $recipe->ingredients = json_encode($request->bahan); // Pastikan ini disimpan sebagai JSON
+            $recipe->steps = json_encode($request->langkah);     // Pastikan ini disimpan sebagai JSON
+            $recipe->step_images = json_encode($fotoLangkahPaths); // Pastikan ini disimpan sebagai JSON
+
+            $recipe->save();
+
+            return redirect()->route('recipe.create')->with('success', 'Resep berhasil diunggah!');
+        } catch (\Exception $e) {
+            Log::error('Error menyimpan resep: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal menyimpan resep: ' . $e->getMessage())->withInput();
         }
-
-        $recipe = new Recipe();
-        $recipe->title = $request->judul;
-        $recipe->description = $request->deskripsi;
-        $recipe->servings = $request->porsi;
-        $recipe->duration = $request->durasi;
-        $recipe->category_id = $request->category_id;
-        $recipe->main_image = $fotoPath;
-        $recipe->ingredients = $request->bahan;
-        $recipe->steps = $request->langkah;
-        $recipe->step_images = $fotoLangkahPaths;
-        $recipe->save();
-
-        return redirect()->back()->with('success', 'Resep berhasil diunggah!');
     }
 }

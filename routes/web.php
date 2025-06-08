@@ -37,25 +37,15 @@ Route::get('/gantiemail', function () {
     return view('gantiemail');
 });
 
-Route::get('/berandaSebelumLogin', function () {
-    return view('berandaSebelumLogin');
-});
+Route::get('/berandaSebelumLogin', [RecipeController::class, 'indexBeforeLogin'])->name('beranda.sebelum.login');
 
-Route::get('/berandaSetelahLogin', function () {
-    return view('berandaSetelahLogin');
-});
+Route::get('/berandaSetelahLogin', [RecipeController::class, 'indexAfterLogin'])->name('beranda.setelah.login');
 
-Route::get('/makanan', function () {
-    return view('makanan');
-});
+Route::get('/makanan', [RecipeController::class, 'showMakanan'])->name('makanan');
 
-Route::get('/minuman', function () {
-    return view('minuman');
-});
+Route::get('/minuman', [RecipeController::class, 'showMinuman'])->name('minuman');
 
-Route::get('/cemilan', function () {
-    return view('cemilan');
-});
+Route::get('/cemilan', [RecipeController::class, 'showCemilan'])->name('cemilan');
 
 Route::get('/koleksiAda', function () {
     return view('koleksiAda');
@@ -82,3 +72,4 @@ Route::get('/auth/facebook/callback', [RegisterController::class, 'handleFaceboo
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
