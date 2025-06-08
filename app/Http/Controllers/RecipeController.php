@@ -18,12 +18,12 @@ class RecipeController extends Controller
     }
     public function indexAfterLogin()
     {
-        $recipes = Recipe::latest()->get(); // Ambil data resep
-        return view('berandaSetelahLogin', compact('recipes')); // Teruskan ke view
+        $recipes = Recipe::latest()->get();
+        return view('berandaSetelahLogin', compact('recipes'));
     }
     public function create()
     {
-        $categories = Category::all(); // Ambil semua kategori untuk dropdown
+        $categories = Category::all();
         return view('uploadresep', compact('categories'));
     }
 
@@ -45,16 +45,16 @@ class RecipeController extends Controller
         ]);
 
         try {
-            $fotoPath = $request->hasFile('foto') ? $request->file('foto')->store('resep/foto', 'public') : null;
+            $fotoPath = $request->hasFile('foto') ? $request->file('foto')->store('images/recipes', 'public') : null;
             $fotoLangkahPaths = [];
             if ($request->hasFile('foto_langkah')) {
                 foreach ($request->file('foto_langkah') as $fotoLangkah) {
-                    $fotoLangkahPaths[] = $fotoLangkah ? $fotoLangkah->store('resep/langkah', 'public') : null;
+                    $fotoLangkahPaths[] = $fotoLangkah ? $fotoLangkah->store('images/steps', 'public') : null;
                 }
             }
 
             $recipe = new Recipe();
-            $recipe->user_id = auth()->id(); // Pastikan user login
+            $recipe->user_id = auth()->id();
             $recipe->title = $request->title;
             $recipe->description = $request->description;
             $recipe->servings = $request->porsi;
