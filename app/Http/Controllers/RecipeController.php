@@ -6,9 +6,16 @@ use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
+     public function indexBeforeLogin()
+    {
+        $recipes = Recipe::latest()->get(); 
+
+        return view('berandaSebelumLogin', compact('recipes'));
+    }
     public function create()
     {
         $categories = Category::all(); // Ambil semua kategori untuk dropdown

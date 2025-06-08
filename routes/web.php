@@ -37,9 +37,7 @@ Route::get('/gantiemail', function () {
     return view('gantiemail');
 });
 
-Route::get('/berandaSebelumLogin', function () {
-    return view('berandaSebelumLogin');
-});
+Route::get('/berandaSebelumLogin', [RecipeController::class, 'indexBeforeLogin'])->name('beranda.sebelum.login');
 
 Route::get('/berandaSetelahLogin', function () {
     return view('berandaSetelahLogin');

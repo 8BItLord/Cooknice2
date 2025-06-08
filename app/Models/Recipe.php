@@ -9,6 +9,8 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $table = 'recipes';
+
     protected $fillable = [
         'user_id',
         'title',
@@ -31,5 +33,9 @@ class Recipe extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

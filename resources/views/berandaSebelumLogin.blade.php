@@ -45,15 +45,10 @@
           </div>
 
           <div class="grid grid-cols-4 gap-6 p-4">
-            <!-- Card -->
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
+            @foreach ($recipes as $recipe)
+                <x-cardresep :recipe="$recipe"></x-cardresep>
+            @endforeach
+          </div>
             
             
           </div>
