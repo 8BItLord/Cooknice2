@@ -16,6 +16,11 @@ class RecipeController extends Controller
 
         return view('berandaSebelumLogin', compact('recipes'));
     }
+    public function indexAfterLogin()
+    {
+        $recipes = Recipe::latest()->get(); // Ambil data resep
+        return view('berandaSetelahLogin', compact('recipes')); // Teruskan ke view
+    }
     public function create()
     {
         $categories = Category::all(); // Ambil semua kategori untuk dropdown
