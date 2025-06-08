@@ -1,5 +1,5 @@
 <a href="/halamanResep" class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
-    <img src="<?php echo e(asset($recipe->main_image)); ?>" alt="Menu" class="w-full h-40 object-cover">
+    <img src="<?php echo e(asset('storage/' . $recipe->main_image)); ?>" alt="Menu" class="w-full h-40 object-cover">
     <div class="p-4 flex justify-between items-center">
         <div>
             <h2 class="font-bold text-lg">
