@@ -33,11 +33,14 @@
       <hr class="my-3 border-t border-black">
 
       <!-- Tombol Logout -->
-      <a href="#" class="flex items-center space-x-2 cursor-pointer hover:text-black text-sm">
-        <img src="/gambar/logout.png" class="w-4 h-4" />
-        <span>Keluar</span>
-      </a>
-    </div>
+      <form action="{{ route('logout') }}" method="POST" id="logout-form">
+    @csrf
+    <button type="submit" class="flex items-center space-x-2 cursor-pointer hover:text-black text-sm">
+      <img src="/gambar/logout.png" class="w-4 h-4" />
+      <span>Keluar</span>
+    </button>
+  </form>
+</div>
 
     <!-- JS: Atur tampilan overlay -->
     <script>
