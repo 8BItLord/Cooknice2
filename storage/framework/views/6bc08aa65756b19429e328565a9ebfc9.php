@@ -56,18 +56,21 @@
                 <!-- Profil Pengguna -->
                 <section class="flex items-center space-x-10 w-[670px] mx-auto py-10">
                     <div class="w-[100px] h-[100px] rounded-full overflow-hidden border border-[#000000]">
-                        <img src="/gambar/user.png" alt="Foto Profil" class="w-full h-full object-cover">
+                        <img src="<?php echo e(Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('gambar/profile.png')); ?>" alt="Foto Profil" class="w-full h-full object-cover">
                     </div>
                     <div class="text-left">
-                        <h1 class="text-1xl font-semibold text-[#333]">Nama Pengguna</h1>
+                        <h1 class="text-1xl font-semibold text-[#333]">
+                            <?php echo e(Auth::user()->name ?? 'Guest User'); ?> 
+                        </h1>
                         
                     </div>
                 </section>
 
-                <!-- Bio Tentang Pengguna -->
+                <!-- Deskripsi User -->
                 <section class="text-center px-8">
                     <p class="text-base text-gray-700 mb-4 max-w-2xl mx-auto text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis eum accusamus voluptatem iure ipsa aspernatur, laudantium ea ratione, unde ab illum inventore incidunt? Est nostrum sequi ullam esse asperiores.
+                        <?php echo e(Auth::user()->profile_description ?? 'Belum ada deskripsi.'); ?>
+
                     </p>
                 </section>
 
@@ -78,13 +81,37 @@
                     </a>
                 </div>
 
-                <!-- Pesan Belum Ada Resep -->
-                <div class="max-w-[750px] mx-auto text-center mt-10">
-                    <div class="flex flex-col items-center gap-4">
-                        <img src="/gambar/lightbulb.png" class="w-20 h-20">
-                        <h2 class="text-xl font-semibold text-gray-800 mb-2">Belum ada resep</h2>
-                        <p class="text-gray-600 text-3xl">Unggah resep yang ingin anda bagikan</p>
-                    </div>
+                
+                <div class="grid grid-cols-4 gap-6 p-4 mx-auto text-left mt-10">
+                    <?php if($recipes->isEmpty()): ?>
+                        <div class="flex flex-col col-span-4 items-center gap-4">
+                            <img src="/gambar/lightbulb.png" class="w-20 h-20">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-2">Belum ada resep</h2>
+                            <p class="text-gray-600 text-3xl">Unggah resep yang ingin anda bagikan</p>
+                        </div>
+                    <?php else: ?>
+                        <?php $__currentLoopData = $recipes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recipe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal081d319767d5e7203090f5ea3bdd8568 = $attributes; } ?>
+<?php $component = App\View\Components\Cardresep::resolve(['recipe' => $recipe] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cardresep'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Cardresep::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
+<?php $attributes = $__attributesOriginal081d319767d5e7203090f5ea3bdd8568; ?>
+<?php unset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
+<?php $component = $__componentOriginal081d319767d5e7203090f5ea3bdd8568; ?>
+<?php unset($__componentOriginal081d319767d5e7203090f5ea3bdd8568); ?>
+<?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </div>
             </div>
 

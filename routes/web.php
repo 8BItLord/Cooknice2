@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -23,13 +24,10 @@ Route::get('/clickedprofile', function () {
     return view('clickedprofile');
 });
 
-Route::get('/halamanprofile', function () {
-    return view('halamanprofile');
-});
+Route::get('/halamanprofile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
 
-Route::get('/editprofile', function () {
-    return view('editprofile');
-});
+Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/gantiemail', function () {
     return view('gantiemail');
