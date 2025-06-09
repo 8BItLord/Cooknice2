@@ -5,9 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RecipeController::class, 'indexBeforeLogin'])->name('welcome');
 
 Route::get('/login', function () {
     return view('login');
@@ -37,7 +35,7 @@ Route::get('/gantiemail', function () {
     return view('gantiemail');
 });
 
-Route::get('/berandaSebelumLogin', [RecipeController::class, 'indexBeforeLogin'])->name('beranda.sebelum.login');
+
 
 Route::get('/berandaSetelahLogin', [RecipeController::class, 'indexAfterLogin'])->name('beranda.setelah.login');
 
@@ -61,6 +59,8 @@ Route::get('/halamanResep', function () {
 
 Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');
+
+Route::post('/favorites/{recipe}', [RecipeController::class, 'toggleFavorite'])->name('favorites.toggle')->middleware('auth');
 
 Route::get('/daftar', [RegisterController::class, 'showRegistrationForm'])->name('daftar');
 Route::post('/daftar', [RegisterController::class, 'register']);
