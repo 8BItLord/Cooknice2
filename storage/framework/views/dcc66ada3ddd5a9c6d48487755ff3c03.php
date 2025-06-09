@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Cooknice</title>
-    @vite('resources/css/app.css')
+    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
 
@@ -30,29 +30,31 @@
       <a href="/" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">×</a>
       
       <!-- Pesan Sukses atau Error -->
-      @if (session('success'))
+      <?php if(session('success')): ?>
           <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
-              {{ session('success') }}
+              <?php echo e(session('success')); ?>
+
           </div>
-      @endif
-      @if (session('error'))
+      <?php endif; ?>
+      <?php if(session('error')): ?>
           <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
-              {{ session('error') }}
+              <?php echo e(session('error')); ?>
+
           </div>
-      @endif
-      @if ($errors->any())
+      <?php endif; ?>
+      <?php if($errors->any()): ?>
           <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
               <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
+                  <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <li><?php echo e($error); ?></li>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </ul>
           </div>
-      @endif
+      <?php endif; ?>
 
       <!-- Form Login -->
-      <form action="{{ route('login') }}" method="POST" class="space-y-6">
-        @csrf
+      <form action="<?php echo e(route('login')); ?>" method="POST" class="space-y-6">
+        <?php echo csrf_field(); ?>
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-semibold font-poppins text-[#005A64] mb-1">Email</label>
@@ -61,15 +63,22 @@
               type="email"
               id="email"
               name="email"
-              value="{{ old('email') }}"
+              value="<?php echo e(old('email')); ?>"
               class="w-full border-b-2 border-gray-400 focus:outline-none focus:border-[#005A64] pr-10 pb-1 text-[#005A64] font-semibold font-poppins"
               placeholder="Masukkan Email"/>
             <span class="absolute right-2 top-1.5 text-gray-400">
               <img src="/gambar/email1.png" class="w-4 h-4"/>
             </span>
-            @error('email')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
+            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <span class="text-red-500 text-sm"><?php echo e($message); ?></span>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
           </div>
         </div>
 
@@ -86,9 +95,16 @@
             <span class="absolute right-2 top-1.5 text-gray-400">
               <img src="/gambar/lock1.png" class="w-4 h-4"/>
             </span>
-            @error('password')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
+            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <span class="text-red-500 text-sm"><?php echo e($message); ?></span>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
           </div>
         </div>
 
@@ -108,13 +124,13 @@
       </div>
 
       <!-- Login dengan Google -->
-      <a href="{{ route('auth.google') }}" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200 mb-3">
+      <a href="<?php echo e(route('auth.google')); ?>" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200 mb-3">
         <img src="/gambar/google.png" class="w-5 h-5" />
         <span>Masuk dengan Google</span>
       </a>
 
       <!-- Login dengan Facebook -->
-      <a href="{{ route('auth.facebook') }}" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200">
+      <a href="<?php echo e(route('auth.facebook')); ?>" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200">
         <img src="/gambar/facebook1.png" class="w-6 h-6" />
         <span>Masuk dengan Facebook</span>
       </a>
@@ -130,3 +146,4 @@
   </body>
 
 </html>
+<?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/login.blade.php ENDPATH**/ ?>

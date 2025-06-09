@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +15,43 @@ class RecipeController extends Controller
     public function indexBeforeLogin()
     {
         $recipes = Recipe::latest()->get(); 
-        return view('berandaSebelumLogin', compact('recipes'));
+        return view('welcome', compact('recipes'));
     }
 
     public function indexAfterLogin()
     {
         $recipes = Recipe::latest()->get();
         return view('berandaSetelahLogin', compact('recipes'));
+    }
+
+    public function showMakanan()
+    {
+        $category = Category::where('name', 'Makanan')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('makanan', compact('recipes'));
+    }
+
+    public function showMinuman()
+    {
+        $category = Category::where('name', 'Minuman')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('minuman', compact('recipes'));
+    }
+
+    public function showCemilan()
+    {
+        $category = Category::where('name', 'Cemilan')->firstOrFail();
+        $recipes = Recipe::where('category_id', $category->id)
+                        ->with('user')
+                        ->latest()
+                        ->get();
+        return view('cemilan', compact('recipes'));
     }
 
     public function create()
@@ -81,6 +112,33 @@ class RecipeController extends Controller
         } catch (\Exception $e) {
             Log::error('Error menyimpan resep: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal menyimpan resep: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    public function toggleFavorite(Recipe $recipe)
+    {
+        try {
+            $userId = Auth::id();
+            $existingFavorite = Favorite::where('user_id', $userId)
+                                       ->where('recipe_id', $recipe->id)
+                                       ->first();
+
+            if ($existingFavorite) {
+                // Hapus dari favorit
+                $existingFavorite->delete();
+                return redirect()->back();
+            }
+
+            // Tambahkan ke favorit
+            Favorite::create([
+                'user_id' => $userId,
+                'recipe_id' => $recipe->id,
+            ]);
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            Log::error('Error mengubah status favorit: ' . $e->getMessage());
+            return redirect()->back();
         }
     }
 }

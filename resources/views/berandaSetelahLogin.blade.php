@@ -45,7 +45,7 @@
                 <x-cardresep :recipe="$recipe"></x-cardresep>
             @endforeach
           </div>
-          </div>
+          
           
         </div>
       </div>

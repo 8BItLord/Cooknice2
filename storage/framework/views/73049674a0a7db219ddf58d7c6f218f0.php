@@ -8,7 +8,7 @@
         <!-- Menu Items -->
         <nav class="flex flex-col space-y-4 w-full px-4">
           <!-- Item -->
-          <a href="/berandaSetelahLogin" class="{{ request()->is('berandaSetelahLogin') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/berandaSetelahLogin" class="<?php echo e(request()->is('berandaSetelahLogin') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]'); ?> flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/home.png" alt="beranda" class="w-6 h-6" />
             </div>
@@ -17,7 +17,7 @@
             </span>
           </a>
 
-          <a href="/makanan" class="{{ request()->is('makanan') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/makanan" class="<?php echo e(request()->is('makanan') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]'); ?> flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/dish (1).png" alt="makanan" class="w-6 h-6" />
             </div>
@@ -26,7 +26,7 @@
             </span>
           </a>
 
-          <a href="/minuman" class="{{ request()->is('minuman') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/minuman" class="<?php echo e(request()->is('minuman') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]'); ?> flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/soda.png" alt="minuman" class="w-6 h-6" />
             </div>
@@ -35,7 +35,7 @@
             </span>
           </a>
 
-          <a href="/cemilan" class="{{ request()->is('cemilan') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/cemilan" class="<?php echo e(request()->is('cemilan') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]'); ?> flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/nuggets.png" alt="cemilan" class="w-6 h-6" />
             </div>
@@ -44,7 +44,7 @@
             </span>
           </a>
 
-          <a href="/koleksiAda" class="{{ request()->is('koleksiAda') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]' }} flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
+          <a href="/koleksiAda" class="<?php echo e(request()->is('koleksiAda') ? 'bg-[#F58E4A] text-white hover:text-black' : 'text-black rounded-xl hover:bg-[#D9D9D9]'); ?> flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-[#D9D9D9] transition-all duration-300">
             <div class="bg-white p-2 rounded-full">
               <img src="/gambar/bookmark.png" alt="cemilan" class="w-6 h-6" />
             </div>
@@ -53,4 +53,4 @@
             </span>
           </a>
         </nav>
-      </aside>
+      </aside><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/components/sidebar.blade.php ENDPATH**/ ?>
