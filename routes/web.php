@@ -45,9 +45,7 @@ Route::get('/minuman', [RecipeController::class, 'showMinuman'])->name('minuman'
 
 Route::get('/cemilan', [RecipeController::class, 'showCemilan'])->name('cemilan');
 
-Route::get('/koleksiAda', function () {
-    return view('koleksiAda');
-});
+Route::get('/koleksiAda', [RecipeController::class, 'showFavorites'])->name('koleksiAda')->middleware('auth');
 
 Route::get('/koleksiKosong', function () {
     return view('koleksiKosong');

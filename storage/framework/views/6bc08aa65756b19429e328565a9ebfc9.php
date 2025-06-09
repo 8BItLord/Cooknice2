@@ -59,8 +59,8 @@
                         <img src="/gambar/user.png" alt="Foto Profil" class="w-full h-full object-cover">
                     </div>
                     <div class="text-left">
-                        <h1 class="text-2xl font-semibold text-[#333]">Nama Pengguna</h1>
-                        <p class="text-base text-gray-600">@id_cooknice123</p>
+                        <h1 class="text-1xl font-semibold text-[#333]">Nama Pengguna</h1>
+                        
                     </div>
                 </section>
 

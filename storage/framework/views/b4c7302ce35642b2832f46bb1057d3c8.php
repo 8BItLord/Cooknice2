@@ -60,9 +60,21 @@
           </b>
           <div class="grid grid-cols-4 gap-6 p-4">
             <!-- Card -->
-            <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
+            <?php if($recipes->isEmpty()): ?>
+              <div class="flex flex-col col-span-4 justify-center items-center h-140">
+                <img src="/gambar/lightbulb.png" alt="kosong" class="w-65">
+                <b class="m-2">
+                  Belum ada resep
+                </b>
+                <p class="text-2xl text-[#00000094]">
+                  Semua resep yang kamu simpan akan ditampilkan disini
+                </p>
+              </div>
+            <?php else: ?>
+                <?php $__currentLoopData = $recipes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recipe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal081d319767d5e7203090f5ea3bdd8568 = $attributes; } ?>
-<?php $component = App\View\Components\Cardresep::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Cardresep::resolve(['recipe' => $recipe] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('cardresep'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -79,46 +91,9 @@
 <?php $component = $__componentOriginal081d319767d5e7203090f5ea3bdd8568; ?>
 <?php unset($__componentOriginal081d319767d5e7203090f5ea3bdd8568); ?>
 <?php endif; ?>
-            <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal081d319767d5e7203090f5ea3bdd8568 = $attributes; } ?>
-<?php $component = App\View\Components\Cardresep::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('cardresep'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Cardresep::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $attributes = $__attributesOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $component = $__componentOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__componentOriginal081d319767d5e7203090f5ea3bdd8568); ?>
-<?php endif; ?>
-            <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal081d319767d5e7203090f5ea3bdd8568 = $attributes; } ?>
-<?php $component = App\View\Components\Cardresep::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('cardresep'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Cardresep::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $attributes = $__attributesOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $component = $__componentOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__componentOriginal081d319767d5e7203090f5ea3bdd8568); ?>
-<?php endif; ?>
-            
-            
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
+          
           </div>
           
         </div>

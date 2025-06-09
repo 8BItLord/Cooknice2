@@ -29,7 +29,7 @@
   </div>
     
     <!-- Tombol Close (X) -->
-    <a href="/berandaSebelumLogin" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
+    <a href="/" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</a>
     
     <!-- Pesan Sukses Atau Eror -->
 

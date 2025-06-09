@@ -24,11 +24,22 @@
           </b>
           <div class="grid grid-cols-4 gap-6 p-4">
             <!-- Card -->
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            <x-cardresep></x-cardresep>
-            
-            
+            @if ($recipes->isEmpty())
+              <div class="flex flex-col col-span-4 justify-center items-center h-140">
+                <img src="/gambar/lightbulb.png" alt="kosong" class="w-65">
+                <b class="m-2">
+                  Belum ada resep
+                </b>
+                <p class="text-2xl text-[#00000094]">
+                  Semua resep yang kamu simpan akan ditampilkan disini
+                </p>
+              </div>
+            @else
+                @foreach ($recipes as $recipe)
+                    <x-cardresep :recipe="$recipe"></x-cardresep>
+                @endforeach
+            @endif
+          
           </div>
           
         </div>
