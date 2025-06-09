@@ -141,4 +141,13 @@ class RecipeController extends Controller
             return redirect()->back();
         }
     }
+
+    public function showFavorites()
+    {
+        $recipes = Recipe::whereHas('favorites', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->with('user')->latest()->get();
+        
+        return view('koleksiAda', compact('recipes'));
+    }
 }
