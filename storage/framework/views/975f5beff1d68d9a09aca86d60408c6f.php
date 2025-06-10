@@ -7,6 +7,7 @@
     <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Cooknice-Main</title>
+    <link rel="icon" href="<?php echo e(asset('gambar/fixlogo.png')); ?>" type="image/png">
   </head>
   
   <body class="bg-[#F9E2AF]">
@@ -138,6 +139,6 @@
 <?php $component = $__componentOriginalaf931c6533813c406795ddc6c29437fc; ?>
 <?php unset($__componentOriginalaf931c6533813c406795ddc6c29437fc); ?>
 <?php endif; ?>
-    
+
   </body>
 </html><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/welcome.blade.php ENDPATH**/ ?>

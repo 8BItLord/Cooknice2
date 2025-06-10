@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.update.email');
     Route::get('/halamanprofile', [ProfileController::class, 'show'])->name('profile.show');
+});
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroy'])->name('admin.recipe.destroy'); // Mengubah nama route agar konsisten
