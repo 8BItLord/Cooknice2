@@ -116,7 +116,7 @@ class RecipeController extends Controller
 
             $recipe->save();
 
-            return redirect()->route('recipe.create')->with('success', 'Resep berhasil diunggah!');
+            return redirect()->route('welcome')->with('success', 'Resep berhasil diunggah!');
         } catch (\Exception $e) {
             Log::error('Error menyimpan resep: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal menyimpan resep: ' . $e->getMessage())->withInput();
