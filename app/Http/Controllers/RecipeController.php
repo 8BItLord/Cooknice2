@@ -93,7 +93,7 @@ class RecipeController extends Controller
                     }
                 }
             }
-
+            
             $recipe = new Recipe();
             $recipe->user_id = Auth::id();
             $recipe->title = $request->title;
@@ -102,9 +102,17 @@ class RecipeController extends Controller
             $recipe->duration = $request->durasi;
             $recipe->category_id = $request->category_id;
             $recipe->main_image = $fotoPath;
-            $recipe->ingredients = json_encode($request->bahan); // Pastikan ini disimpan sebagai JSON
-            $recipe->steps = json_encode($request->langkah);     // Pastikan ini disimpan sebagai JSON
-            $recipe->step_images = json_encode($fotoLangkahPaths); // Pastikan ini disimpan sebagai JSON
+            
+            $filteredBahan = array_filter($request->bahan, function($value) {
+                return is_string($value) && trim($value) !== '';
+            });
+            $filteredLangkah = array_filter($request->langkah, function($value) {
+                return is_string($value) && trim($value) !== '';
+            });
+
+            $recipe->ingredients = json_encode(array_values($filteredBahan));
+            $recipe->steps = json_encode(array_values($filteredLangkah));
+            $recipe->step_images = json_encode(array_values(array_filter($fotoLangkahPaths))); 
 
             $recipe->save();
 
@@ -124,12 +132,10 @@ class RecipeController extends Controller
                                        ->first();
 
             if ($existingFavorite) {
-                // Hapus dari favorit
                 $existingFavorite->delete();
                 return redirect()->back();
             }
 
-            // Tambahkan ke favorit
             Favorite::create([
                 'user_id' => $userId,
                 'recipe_id' => $recipe->id,
@@ -149,5 +155,14 @@ class RecipeController extends Controller
         })->with('user')->latest()->get();
         
         return view('koleksiAda', compact('recipes'));
+    }
+
+    public function show($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $recipe->ingredients = json_decode($recipe->ingredients, true);
+        $recipe->steps = json_decode($recipe->steps, true);
+        $recipe->step_images = json_decode($recipe->step_images, true);
+        return view('halamanResep', compact('recipe'));
     }
 }

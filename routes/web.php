@@ -33,8 +33,6 @@ Route::get('/gantiemail', function () {
     return view('gantiemail');
 });
 
-
-
 Route::get('/berandaSetelahLogin', [RecipeController::class, 'indexAfterLogin'])->name('beranda.setelah.login');
 
 Route::get('/makanan', [RecipeController::class, 'showMakanan'])->name('makanan');
@@ -49,9 +47,13 @@ Route::get('/koleksiKosong', function () {
     return view('koleksiKosong');
 });
 
-Route::get('/halamanResep', function () {
-    return view('halamanResep');
-});
+// Route baru untuk halaman detail resep
+Route::get('/resep/{id}', [RecipeController::class, 'show'])->name('recipe.show');
+
+// Route '/halamanResep' lama tanpa ID dinonaktifkan
+// Route::get('/halamanResep', function () {
+//     return view('halamanResep');
+// });
 
 Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');
@@ -69,3 +71,4 @@ Route::get('/auth/facebook/callback', [RegisterController::class, 'handleFaceboo
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+

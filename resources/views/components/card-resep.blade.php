@@ -1,6 +1,10 @@
 <div class="bg-white rounded-xl shadow-md overflow-hidden">
-    <a href="/halamanResep" class="block">
-        <img src="{{ asset('storage/' . $recipe->main_image) }}" alt="Menu" class="w-full h-40 object-cover">
+    <a href="{{ route('recipe.show', $recipe->id) }}" class="block">
+        @if($recipe->main_image)
+            <img src="{{ asset('storage/' . $recipe->main_image) }}" alt="Menu" class="w-full h-40 object-cover">
+        @else
+            <img src="https://placehold.co/400x200/cccccc/333333?text=No+Image" alt="No Image" class="w-full h-40 object-cover">
+        @endif
         <div class="p-4 flex justify-between items-center">
             <div>
                 <h2 class="font-bold text-lg">
