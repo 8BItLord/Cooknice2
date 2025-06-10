@@ -5,6 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [RecipeController::class, 'indexBeforeLogin'])->name('welcome');
 
@@ -47,13 +48,7 @@ Route::get('/koleksiKosong', function () {
     return view('koleksiKosong');
 });
 
-// Route baru untuk halaman detail resep
 Route::get('/resep/{id}', [RecipeController::class, 'show'])->name('recipe.show');
-
-// Route '/halamanResep' lama tanpa ID dinonaktifkan
-// Route::get('/halamanResep', function () {
-//     return view('halamanResep');
-// });
 
 Route::get('/uploadresep', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/resep', [RecipeController::class, 'store'])->name('recipe.store');
@@ -72,3 +67,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroy'])->name('admin.recipe.destroy'); // Mengubah nama route agar konsisten
+    Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.user.destroy'); // Route baru untuk menghapus pengguna
+});
