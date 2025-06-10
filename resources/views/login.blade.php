@@ -6,6 +6,7 @@
     <title>Login Cooknice</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ asset('gambar/fixlogo.png') }}" type="image/png">
   </head>
 
   <body class="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -99,7 +100,7 @@
           </button>
         </div>
       </form>
-      
+
       
       <!-- Link Daftar -->
       <p class="text-center text-sm text-black font-semibold font-poppins mt-6">

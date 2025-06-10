@@ -10,7 +10,7 @@
 >
     @if (Auth::check())
         <div class="flex items-center space-x-3 mb-4">
-            <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('gambar/profile.png') }}" alt="Avatar" class="w-10 h-10 rounded-full">
+            <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('gambar/profile.png') }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
             <div>
                 <p class="text-sm font-semibold text-gray-800">
                     {{ Auth::user()->name ?? 'Guest User' }}
