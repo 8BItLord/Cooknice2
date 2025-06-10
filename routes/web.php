@@ -25,10 +25,10 @@ Route::get('/clickedprofile', function () {
     return view('clickedprofile');
 });
 
-Route::get('/halamanprofile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
+//Route::get('/halamanprofile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
 
-Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
+//Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/gantiemail', function () {
     return view('gantiemail');
@@ -67,6 +67,17 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+
+
+
+Route::get('/recipes/search', [RecipeController::class, 'search'])->name('recipes.search');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.update.email');
+    Route::get('/halamanprofile', [ProfileController::class, 'show'])->name('profile.show');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroy'])->name('admin.recipe.destroy'); // Mengubah nama route agar konsisten
