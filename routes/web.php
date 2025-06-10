@@ -73,6 +73,10 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 
+
+Route::get('/recipes/search', [RecipeController::class, 'search'])->name('recipes.search');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

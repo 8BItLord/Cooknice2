@@ -14,14 +14,32 @@ class RecipeController extends Controller
 {
     public function indexBeforeLogin()
     {
-        $recipes = Recipe::latest()->get(); 
+        $recipes = Recipe::with('user')->latest()->get();
         return view('welcome', compact('recipes'));
     }
 
     public function indexAfterLogin()
     {
-        $recipes = Recipe::latest()->get();
+        $recipes = Recipe::with('user')->latest()->get();
         return view('berandaSetelahLogin', compact('recipes'));
+    }
+
+    public function search(Request $request)
+    {
+        Log::info('Search request received with query: ' . $request->query('query'));
+
+        $query = trim($request->query('query'));
+        $recipes = Recipe::with('user')
+            ->when($query, function ($q) use ($query) {
+                return $q->where('title', 'LIKE', '%' . $query . '%');
+            })
+            ->latest()
+            ->get();
+
+        Log::info('Found ' . $recipes->count() . ' recipes for query: ' . $query);
+
+        $view = Auth::check() ? 'berandaSetelahLogin' : 'welcome';
+        return view($view, compact('recipes'));
     }
 
     public function showMakanan()

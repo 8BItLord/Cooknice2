@@ -115,25 +115,7 @@ unset($__errorArgs, $__bag); ?>
           </button>
         </div>
       </form>
-
-      <!-- Pemisah -->
-      <div class="flex items-center my-4">
-        <hr class="flex-grow border-t border-[#000000]" />
-        <span class="mx-2 text-sm text-[#000000]">atau</span>
-        <hr class="flex-grow border-t border-[#000000]" />
-      </div>
-
-      <!-- Login dengan Google -->
-      <a href="<?php echo e(route('auth.google')); ?>" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200 mb-3">
-        <img src="/gambar/google.png" class="w-5 h-5" />
-        <span>Masuk dengan Google</span>
-      </a>
-
-      <!-- Login dengan Facebook -->
-      <a href="<?php echo e(route('auth.facebook')); ?>" class="w-full flex items-center justify-center space-x-2 border rounded-md py-2 bg-[#005A64] text-white font-semibold font-poppins hover:bg-[#004852] transition duration-200">
-        <img src="/gambar/facebook1.png" class="w-6 h-6" />
-        <span>Masuk dengan Facebook</span>
-      </a>
+      
       
       <!-- Link Daftar -->
       <p class="text-center text-sm text-black font-semibold font-poppins mt-6">
