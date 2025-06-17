@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $__env->yieldContent('title', 'Cooknice'); ?></title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+        <title><?php echo $__env->yieldContent('title', 'Cooknice'); ?></title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
-    <link rel="icon" href="<?php echo e(asset('gambar/fixlogo.png')); ?>" type="image/png">
-</head>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo e(asset('build/assets/app-CMmxYR91.css')); ?>" >
+        <link rel="icon" href="<?php echo e(asset('gambar/fixlogo.png')); ?>" type="image/png">
+    </head>
     <body class="bg-[#F9E2AF]">
         <?php echo $__env->yieldContent('content'); ?>
     </body>

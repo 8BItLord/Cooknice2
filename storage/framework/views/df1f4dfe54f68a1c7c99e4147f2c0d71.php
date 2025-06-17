@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('build/assets/app-CMmxYR91.css')); ?>" >
     <title>Admin Panel</title>
 </head>
 <body class="bg-[#F9E2AF]">

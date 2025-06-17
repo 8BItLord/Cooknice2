@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Profile</title>
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CMmxYR91.css') }}" >
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ asset('gambar/fixlogo.png') }}" type="image/png">
@@ -55,7 +55,7 @@
                         </div>
                     @else
                         @foreach ($recipes as $recipe)
-                            <x-cardresep :recipe="$recipe"></x-cardresep>
+                            <x-card-resep :recipe="$recipe"></x-card-resep>
                         @endforeach
                     @endif
                 </div>
@@ -64,7 +64,7 @@
         </div>
         
 
-        <x-clickedprofile></x-clickedprofile>
+        <x-clicked-profile></x-clicked-profile>
 
         
 

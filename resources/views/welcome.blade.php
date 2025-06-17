@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @vite('resources/css/app.css')
+    
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CMmxYR91.css') }}" >
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Cooknice-Main</title>
     <link rel="icon" href="{{ asset('gambar/fixlogo.png') }}" type="image/png">
@@ -57,7 +58,7 @@
           <!-- Daftar Resep -->
           <div class="grid grid-cols-4 gap-6 p-4">
             @foreach ($recipes as $recipe)
-                <x-cardresep :recipe="$recipe"></x-cardresep>
+                <x-card-resep :recipe="$recipe"></x-card-resep>
             @endforeach
           </div>
 
@@ -66,7 +67,7 @@
 
     </div>
 
-    <x-clickedprofile></x-clickedprofile>
+    <x-clicked-profile></x-clicked-profile>
 
   </body>
 </html>

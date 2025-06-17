@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daftar Cooknice</title>
-  @vite('resources/css/app.css')
+  <link rel="stylesheet" href="{{ asset('build/assets/app-CMmxYR91.css') }}" >
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="{{ asset('gambar/fixlogo.png') }}" type="image/png">
 

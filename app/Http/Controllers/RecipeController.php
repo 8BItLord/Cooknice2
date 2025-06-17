@@ -80,34 +80,54 @@ class RecipeController extends Controller
 
     public function store(Request $request)
     {
+        Log::info('Recipe store request received with data:', $request->all());
+        Log::info('Files in request:', $request->files->all());
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'porsi' => 'nullable|string',
-            'durasi' => 'nullable|string',
+            'porsi' => 'nullable|integer',
+            'durasi' => 'nullable|integer',
             'bahan' => 'required|array',
             'bahan.*' => 'required|string|max:255',
             'langkah' => 'required|array',
             'langkah.*' => 'required|string',
             'foto_langkah' => 'nullable|array',
             'foto_langkah.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'required|exists:categories,id',
+        ], [
+            'title.required' => 'Judul resep wajib diisi.',
+            'bahan.required' => 'Setidaknya satu bahan wajib diisi.',
+            'bahan.*.required' => 'Bahan tidak boleh kosong.',
+            'langkah.required' => 'Setidaknya satu langkah wajib diisi.',
+            'langkah.*.required' => 'Langkah tidak boleh kosong.',
+            'foto.image' => 'Foto resep harus berupa gambar.',
+            'foto.mimes' => 'Foto resep harus berformat JPEG, PNG, JPG, atau GIF.',
+            'foto.max' => 'Ukuran foto resep tidak boleh lebih dari 2MB.',
+            'foto_langkah.*.image' => 'Foto langkah harus berupa gambar.',
+            'foto_langkah.*.mimes' => 'Foto langkah harus berformat JPEG, PNG, JPG, atau GIF.',
+            'foto_langkah.*.max' => 'Ukuran foto langkah tidak boleh lebih dari 2MB.',
+            'category_id.required' => 'Kategori wajib dipilih.',
+            'category_id.exists' => 'Kategori tidak valid.',
         ]);
 
         try {
             $fotoPath = null;
             if ($request->hasFile('foto')) {
+                Log::info('Main photo detected: ' . $request->file('foto')->getClientOriginalName());
                 $fotoPath = $request->file('foto')->store('images/recipes', 'public');
             }
 
             $fotoLangkahPaths = [];
             if ($request->hasFile('foto_langkah')) {
-                foreach ($request->file('foto_langkah') as $fotoLangkah) {
+                foreach ($request->file('foto_langkah') as $index => $fotoLangkah) {
                     if ($fotoLangkah && $fotoLangkah->isValid()) {
-                        $fotoLangkahPaths[] = $fotoLangkah->store('images/steps', 'public');
+                        $path = $fotoLangkah->store('images/steps', 'public');
+                        Log::info("Step photo {$index} stored at: {$path}");
+                        $fotoLangkahPaths[] = $path;
                     } else {
-                        Log::warning("File langkah tidak valid atau kosong.");
+                        Log::warning("Step photo {$index} is invalid or empty.");
                     }
                 }
             }
@@ -134,9 +154,11 @@ class RecipeController extends Controller
 
             $recipe->save();
 
+            Log::info('Recipe saved successfully: ' . $recipe->id);
+
             return redirect()->route('welcome')->with('success', 'Resep berhasil diunggah!');
         } catch (\Exception $e) {
-            Log::error('Error menyimpan resep: ' . $e->getMessage());
+            Log::error('Error saving recipe: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal menyimpan resep: ' . $e->getMessage())->withInput();
         }
     }
@@ -161,7 +183,7 @@ class RecipeController extends Controller
 
             return redirect()->back();
         } catch (\Exception $e) {
-            Log::error('Error mengubah status favorit: ' . $e->getMessage());
+            Log::error('Error toggling favorite: ' . $e->getMessage());
             return redirect()->back();
         }
     }

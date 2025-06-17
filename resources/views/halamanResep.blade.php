@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <x-clickedprofile></x-clickedprofile>
+    <x-clicked-profile></x-clicked-profile>
 
     <script>
         function toggleDeskripsi() {

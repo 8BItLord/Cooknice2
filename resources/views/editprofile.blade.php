@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>Edit Profile</title>
-      @vite('resources/css/app.css')
+      <link rel="stylesheet" href="{{ asset('build/assets/app-CMmxYR91.css') }}" >
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
       <link rel="icon" href="{{ asset('gambar/fixlogo.png') }}" type="image/png">
   </head>
@@ -101,7 +101,7 @@
           </div>
       </div>
 
-      <x-clickedprofile></x-clickedprofile>
+      <x-clicked-profile></x-clicked-profile>
 
       <!-- Popup Ganti Email -->
       <div id="email-popup-wrapper" class="fixed inset-0 z-50 hidden items-center justify-center min-h-screen bg-black/30 backdrop-blur-sm">
